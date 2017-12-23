@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jt28.a6735.jmreceiptcabinet.MainActivity"
+    android:orientation="vertical">
+
+   <Button
+       android:id="@+id/id_open"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="打开"/>
+
+    <Button
+        android:id="@+id/id_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭"/>
+
+    <Button
+        android:id="@+id/id_zero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="回零"/>
+
+    <EditText
+        android:id="@+id/id_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0"/>
+    <TextView
+        android:id="@+id/id_erro_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

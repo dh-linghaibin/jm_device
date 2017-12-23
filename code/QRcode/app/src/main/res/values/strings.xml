@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QRcode</string>
+
+    <string name="app_title">USB Serial Example</string>
+    <string name="refreshing">Refreshing...</string>
+
+</resources>
