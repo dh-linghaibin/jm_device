@@ -72,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         but_open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_JMReceipt.openDrawer(Integer.valueOf(edit_num.getText().toString()));
+                //m_JMReceipt.openDrawer(Integer.valueOf(edit_num.getText().toString()));
             }
         });
 
         but_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_JMReceipt.closeDrawer(Integer.valueOf(edit_num.getText().toString()));
+                //m_JMReceipt.closeDrawer(Integer.valueOf(edit_num.getText().toString()));
             }
         });
 
@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 m_JMReceipt.resetDevice();
             }
         });
+
+        m_JMReceipt.openDrawer(760);
     }
 
 //    @Override

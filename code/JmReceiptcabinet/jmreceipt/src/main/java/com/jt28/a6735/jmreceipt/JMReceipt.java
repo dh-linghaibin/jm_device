@@ -192,6 +192,9 @@ public class JMReceipt extends com.telecp.deviceactioninterface.DrawerManager {
                 Log.d(TAG,"错误");
             }
         }
+        for(int i = 0;i < 10;i++) {
+            drawershield[i] = 0x01;
+        }
     }
     /*
     * 检查boxNum号(1-N号抽屉)的状态
@@ -496,7 +499,7 @@ public class JMReceipt extends com.telecp.deviceactioninterface.DrawerManager {
         send_data[14] = (byte)(send_data[3]+send_data[4]+send_data[5]+send_data[6]+send_data[7]+send_data[8]+send_data[9]+send_data[10]+send_data[11]+send_data[12]);
         send_data[15] = (byte)0x0a;
         try {
-            write_log( "发送"+ cmd+Arrays.toString(send_data));
+            write_log( "发送"+ cmd+Arrays.toString(send_data) + "地址" + send_data[1] );
             serialUtilOld.setData(send_data);
         } catch (NullPointerException e) {
             write_log("串口 发送错误");
@@ -766,58 +769,58 @@ public class JMReceipt extends com.telecp.deviceactioninterface.DrawerManager {
                                 break;
 
                                 case "回零": {
-//                                    if (rec_data[17] == (byte) 0x21) {
-//                                        write_log( "回零 成功");
-//                                        //连续初始化
-//                                        if (start_num < hostnumber+1) {
-//                                            if (initDrawer_flag) {
-//                                                try {
-//                                                    Thread.sleep(100);
-//                                                } catch (InterruptedException e) {
-//                                                    e.printStackTrace();
-//                                                }
-//                                                if (initDrawer_flag) {
-//                                                    if (!mWorking) {
-//                                                        if (start_num < hostnumber+1) {
-//                                                            start_num++;
-//                                                            CmdSend("检测阻挡", start_num, 1);
-//                                                        }
-//                                                    }
-//                                                }
-//                                            }
-//                                        } else {
-//                                            initDrawer_flag = false;
-//                                        }
-//                                    } else {
-//                                        write_log( "回零 失败");
-//                                        h_var1 = draw_num;
-//                                        h_var2 = 0x03;
-//                                        Message message = new Message();
-//                                        message.what = 1;
-//                                        JMReceipt.this.mHandler.sendMessage(message);
-//                                        error_num = 0x03;
-//                                    }
-                                    write_log( "回零 成功");
-                                    //连续初始化
-                                    if (start_num < hostnumber+1) {
-                                        if (initDrawer_flag) {
-                                            try {
-                                                Thread.sleep(100);
-                                            } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                            }
+                                    if (rec_data[17] == (byte) 0x21) {
+                                        write_log( "回零 成功");
+                                        //连续初始化
+                                        if (start_num < hostnumber+1) {
                                             if (initDrawer_flag) {
-                                                if (!mWorking) {
-                                                    if (start_num < hostnumber+1) {
-                                                        start_num++;
-                                                        CmdSend("检测阻挡", start_num, 1);
+                                                try {
+                                                    Thread.sleep(100);
+                                                } catch (InterruptedException e) {
+                                                    e.printStackTrace();
+                                                }
+                                                if (initDrawer_flag) {
+                                                    if (!mWorking) {
+                                                        if (start_num < hostnumber+1) {
+                                                            start_num++;
+                                                            CmdSend("检测阻挡", start_num, 1);
+                                                        }
                                                     }
                                                 }
                                             }
+                                        } else {
+                                            initDrawer_flag = false;
                                         }
                                     } else {
-                                        initDrawer_flag = false;
+                                        write_log( "回零 失败");
+                                        h_var1 = draw_num;
+                                        h_var2 = 0x03;
+                                        Message message = new Message();
+                                        message.what = 1;
+                                        JMReceipt.this.mHandler.sendMessage(message);
+                                        error_num = 0x03;
                                     }
+//                                    write_log( "回零 成功");
+//                                    //连续初始化
+//                                    if (start_num < hostnumber+1) {
+//                                        if (initDrawer_flag) {
+//                                            try {
+//                                                Thread.sleep(100);
+//                                            } catch (InterruptedException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            if (initDrawer_flag) {
+//                                                if (!mWorking) {
+//                                                    if (start_num < hostnumber+1) {
+//                                                        start_num++;
+//                                                        CmdSend("检测阻挡", start_num, 1);
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                    } else {
+//                                        initDrawer_flag = false;
+//                                    }
                                 }
                                 break;
 
